@@ -1,0 +1,6 @@
+@McpOnePiece_HostAddress = http://localhost:5100
+
+GET {{McpOnePiece_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
