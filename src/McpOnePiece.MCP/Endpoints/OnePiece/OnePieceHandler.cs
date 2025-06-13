@@ -12,9 +12,9 @@ public class OnePieceHandler
     _onePieceService = onePieceService;
   }
 
-  public async Task<IResult> GetCharacters(int page = 1, int limit = 20)
+  public async Task<IResult> GetCharacters()
   {
-    var characters = await _onePieceService.GetCharactersAsync(page, limit);
+    var characters = await _onePieceService.GetCharactersAsync();
     return Results.Ok(characters);
   }
 
@@ -28,20 +28,20 @@ public class OnePieceHandler
     return Results.Ok(character);
   }
 
-  public async Task<IResult> SearchCharacters(string name, int page = 1, int limit = 20)
+  public async Task<IResult> SearchCharacters(string name)
   {
     if (string.IsNullOrWhiteSpace(name))
     {
       return Results.BadRequest("Name parameter is required");
     }
 
-    var characters = await _onePieceService.SearchCharactersAsync(name, page, limit);
+    var characters = await _onePieceService.SearchCharactersAsync(name);
     return Results.Ok(characters);
   }
 
-  public async Task<IResult> GetCrews(int page = 1, int limit = 20)
+  public async Task<IResult> GetCrews()
   {
-    var crews = await _onePieceService.GetCrewsAsync(page, limit);
+    var crews = await _onePieceService.GetCrewsAsync();
     return Results.Ok(crews);
   }
 
@@ -55,20 +55,20 @@ public class OnePieceHandler
     return Results.Ok(crew);
   }
 
-  public async Task<IResult> SearchCrews(string name, int page = 1, int limit = 20)
+  public async Task<IResult> SearchCrews(string name)
   {
     if (string.IsNullOrWhiteSpace(name))
     {
       return Results.BadRequest("Name parameter is required");
     }
 
-    var crews = await _onePieceService.SearchCrewsAsync(name, page, limit);
+    var crews = await _onePieceService.SearchCrewsAsync(name);
     return Results.Ok(crews);
   }
 
-  public async Task<IResult> GetDevilFruits(int page = 1, int limit = 20)
+  public async Task<IResult> GetDevilFruits()
   {
-    var fruits = await _onePieceService.GetDevilFruitsAsync(page, limit);
+    var fruits = await _onePieceService.GetDevilFruitsAsync();
     return Results.Ok(fruits);
   }
 
@@ -82,14 +82,14 @@ public class OnePieceHandler
     return Results.Ok(fruit);
   }
 
-  public async Task<IResult> SearchDevilFruits(string name, int page = 1, int limit = 20)
+  public async Task<IResult> SearchDevilFruits(string name)
   {
     if (string.IsNullOrWhiteSpace(name))
     {
       return Results.BadRequest("Name parameter is required");
     }
 
-    var fruits = await _onePieceService.SearchDevilFruitsAsync(name, page, limit);
+    var fruits = await _onePieceService.SearchDevilFruitsAsync(name);
     return Results.Ok(fruits);
   }
 }

@@ -4,17 +4,17 @@ namespace McpOnePiece.MCP.Services;
 
 public interface IOnePieceService
 {
-  Task<List<Character>> GetCharactersAsync(int page = 1, int limit = 20);
+  Task<List<Character>> GetCharactersAsync();
   Task<Character?> GetCharacterByIdAsync(int id);
-  Task<List<Character>> SearchCharactersAsync(string name, int page = 1, int limit = 20);
+  Task<List<Character>> SearchCharactersAsync(string name);
 
-  Task<List<Crew>> GetCrewsAsync(int page = 1, int limit = 20);
+  Task<List<Crew>> GetCrewsAsync();
   Task<Crew?> GetCrewByIdAsync(int id);
-  Task<List<Crew>> SearchCrewsAsync(string name, int page = 1, int limit = 20);
+  Task<List<Crew>> SearchCrewsAsync(string name);
 
-  Task<List<DevilFruit>> GetDevilFruitsAsync(int page = 1, int limit = 20);
+  Task<List<DevilFruit>> GetDevilFruitsAsync();
   Task<DevilFruit?> GetDevilFruitByIdAsync(int id);
-  Task<List<DevilFruit>> SearchDevilFruitsAsync(string name, int page = 1, int limit = 20);
+  Task<List<DevilFruit>> SearchDevilFruitsAsync(string name);
 }
 
 public class OnePieceService : IOnePieceService
@@ -28,7 +28,7 @@ public class OnePieceService : IOnePieceService
     _logger = logger;
   }
 
-  public async Task<List<Character>> GetCharactersAsync(int page = 1, int limit = 20)
+  public async Task<List<Character>> GetCharactersAsync()
   {
     try
     {
@@ -56,7 +56,7 @@ public class OnePieceService : IOnePieceService
     }
   }
 
-  public async Task<List<Character>> SearchCharactersAsync(string name, int page = 1, int limit = 20)
+  public async Task<List<Character>> SearchCharactersAsync(string name)
   {
     try
     {
@@ -70,11 +70,11 @@ public class OnePieceService : IOnePieceService
     }
   }
 
-  public async Task<List<Crew>> GetCrewsAsync(int page = 1, int limit = 20)
+  public async Task<List<Crew>> GetCrewsAsync()
   {
     try
     {
-      var response = await _apiClient.GetCrewsAsync(page, limit);
+      var response = await _apiClient.GetCrewsAsync();
       return response;
     }
     catch (Exception ex)
@@ -98,11 +98,11 @@ public class OnePieceService : IOnePieceService
     }
   }
 
-  public async Task<List<Crew>> SearchCrewsAsync(string name, int page = 1, int limit = 20)
+  public async Task<List<Crew>> SearchCrewsAsync(string name)
   {
     try
     {
-      var response = await _apiClient.SearchCrewsAsync(name, page, limit);
+      var response = await _apiClient.SearchCrewsAsync(name);
       return response;
     }
     catch (Exception ex)
@@ -112,11 +112,11 @@ public class OnePieceService : IOnePieceService
     }
   }
 
-  public async Task<List<DevilFruit>> GetDevilFruitsAsync(int page = 1, int limit = 20)
+  public async Task<List<DevilFruit>> GetDevilFruitsAsync()
   {
     try
     {
-      var response = await _apiClient.GetDevilFruitsAsync(page, limit);
+      var response = await _apiClient.GetDevilFruitsAsync();
       return response;
     }
     catch (Exception ex)
@@ -140,7 +140,7 @@ public class OnePieceService : IOnePieceService
     }
   }
 
-  public async Task<List<DevilFruit>> SearchDevilFruitsAsync(string name, int page = 1, int limit = 20)
+  public async Task<List<DevilFruit>> SearchDevilFruitsAsync(string name)
   {
     try
     {

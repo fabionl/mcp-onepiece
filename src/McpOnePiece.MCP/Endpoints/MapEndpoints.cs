@@ -17,8 +17,8 @@ public static class MapEndpointsExtensions
 
         // Character endpoints
         onePieceGroup.MapGet("/characters",
-            async (OnePieceHandler handler, int page = 1, int limit = 20) =>
-                await handler.GetCharacters(page, limit))
+            async (OnePieceHandler handler) =>
+                await handler.GetCharacters())
             .WithName("GetCharacters")
             .WithOpenApi();
 
@@ -29,15 +29,15 @@ public static class MapEndpointsExtensions
             .WithOpenApi();
 
         onePieceGroup.MapGet("/characters/search",
-            async (OnePieceHandler handler, string name, int page = 1, int limit = 20) =>
-                await handler.SearchCharacters(name, page, limit))
+            async (OnePieceHandler handler, string name) =>
+                await handler.SearchCharacters(name))
             .WithName("SearchCharacters")
             .WithOpenApi();
 
         // Crew endpoints
         onePieceGroup.MapGet("/crews",
-            async (OnePieceHandler handler, int page = 1, int limit = 20) =>
-                await handler.GetCrews(page, limit))
+            async (OnePieceHandler handler) =>
+                await handler.GetCrews())
             .WithName("GetCrews")
             .WithOpenApi();
 
@@ -48,15 +48,15 @@ public static class MapEndpointsExtensions
             .WithOpenApi();
 
         onePieceGroup.MapGet("/crews/search",
-            async (OnePieceHandler handler, string name, int page = 1, int limit = 20) =>
-                await handler.SearchCrews(name, page, limit))
+            async (OnePieceHandler handler, string name) =>
+                await handler.SearchCrews(name))
             .WithName("SearchCrews")
             .WithOpenApi();
 
         // Devil Fruit endpoints
         onePieceGroup.MapGet("/fruits",
-            async (OnePieceHandler handler, int page = 1, int limit = 20) =>
-                await handler.GetDevilFruits(page, limit))
+            async (OnePieceHandler handler) =>
+                await handler.GetDevilFruits())
             .WithName("GetDevilFruits")
             .WithOpenApi();
 
@@ -67,8 +67,8 @@ public static class MapEndpointsExtensions
             .WithOpenApi();
 
         onePieceGroup.MapGet("/fruits/search",
-            async (OnePieceHandler handler, string name, int page = 1, int limit = 20) =>
-                await handler.SearchDevilFruits(name, page, limit))
+            async (OnePieceHandler handler, string name) =>
+                await handler.SearchDevilFruits(name))
             .WithName("SearchDevilFruits")
             .WithOpenApi();
 
