@@ -32,8 +32,8 @@ public class OnePieceService : IOnePieceService
   {
     try
     {
-      var response = await _apiClient.GetCharactersAsync(page, limit);
-      return response.Data;
+      var response = await _apiClient.GetCharactersAsync();
+      return response;
     }
     catch (Exception ex)
     {
@@ -47,7 +47,7 @@ public class OnePieceService : IOnePieceService
     try
     {
       var response = await _apiClient.GetCharacterByIdAsync(id);
-      return response.Data;
+      return response;
     }
     catch (Exception ex)
     {
@@ -60,8 +60,8 @@ public class OnePieceService : IOnePieceService
   {
     try
     {
-      var response = await _apiClient.SearchCharactersAsync(name, page, limit);
-      return response.Data;
+      var response = await _apiClient.SearchCharactersAsync(name);
+      return response;
     }
     catch (Exception ex)
     {
@@ -75,7 +75,7 @@ public class OnePieceService : IOnePieceService
     try
     {
       var response = await _apiClient.GetCrewsAsync(page, limit);
-      return response.Data;
+      return response;
     }
     catch (Exception ex)
     {
@@ -89,7 +89,7 @@ public class OnePieceService : IOnePieceService
     try
     {
       var response = await _apiClient.GetCrewByIdAsync(id);
-      return response.Data;
+      return response;
     }
     catch (Exception ex)
     {
@@ -103,7 +103,7 @@ public class OnePieceService : IOnePieceService
     try
     {
       var response = await _apiClient.SearchCrewsAsync(name, page, limit);
-      return response.Data;
+      return response;
     }
     catch (Exception ex)
     {
@@ -117,7 +117,7 @@ public class OnePieceService : IOnePieceService
     try
     {
       var response = await _apiClient.GetDevilFruitsAsync(page, limit);
-      return response.Data;
+      return response;
     }
     catch (Exception ex)
     {
@@ -131,7 +131,7 @@ public class OnePieceService : IOnePieceService
     try
     {
       var response = await _apiClient.GetDevilFruitByIdAsync(id);
-      return response.Data;
+      return response;
     }
     catch (Exception ex)
     {
@@ -144,8 +144,8 @@ public class OnePieceService : IOnePieceService
   {
     try
     {
-      var response = await _apiClient.SearchDevilFruitsAsync(name, page, limit);
-      return response.Data;
+      var response = await _apiClient.SearchDevilFruitsAsync(name: name);
+      return response;
     }
     catch (Exception ex)
     {

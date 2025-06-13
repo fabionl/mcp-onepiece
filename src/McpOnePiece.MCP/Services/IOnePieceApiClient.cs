@@ -6,29 +6,29 @@ namespace McpOnePiece.MCP.Services;
 public interface IOnePieceApiClient
 {
   [Get("/characters/en")]
-  Task<OnePieceApiListResponse<Character>> GetCharactersAsync([Query] int? page = null, [Query] int? limit = null);
+  Task<List<Character>> GetCharactersAsync();
 
   [Get("/characters/en/{id}")]
-  Task<OnePieceApiResponse<Character>> GetCharacterByIdAsync(int id);
+  Task<Character> GetCharacterByIdAsync(int id);
 
-  [Get("/characters/search")]
-  Task<OnePieceApiListResponse<Character>> SearchCharactersAsync([Query] string name, [Query] int? page = null, [Query] int? limit = null);
+  [Get("/characters/en/search")]
+  Task<List<Character>> SearchCharactersAsync([Query] string name);
 
   [Get("/crews/en")]
-  Task<OnePieceApiListResponse<Crew>> GetCrewsAsync([Query] int? page = null, [Query] int? limit = null);
+  Task<List<Crew>> GetCrewsAsync([Query] int? page = null, [Query] int? limit = null);
 
   [Get("/crews/en/{id}")]
-  Task<OnePieceApiResponse<Crew>> GetCrewByIdAsync(int id);
+  Task<Crew> GetCrewByIdAsync(int id);
 
-  [Get("/crews/search")]
-  Task<OnePieceApiListResponse<Crew>> SearchCrewsAsync([Query] string name, [Query] int? page = null, [Query] int? limit = null);
+  [Get("/crews/en/search")]
+  Task<List<Crew>> SearchCrewsAsync([Query] string name, [Query] int? page = null, [Query] int? limit = null);
 
   [Get("/fruits/en")]
-  Task<OnePieceApiListResponse<DevilFruit>> GetDevilFruitsAsync([Query] int? page = null, [Query] int? limit = null);
+  Task<List<DevilFruit>> GetDevilFruitsAsync([Query] int? page = null, [Query] int? limit = null);
 
   [Get("/fruits/en/{id}")]
-  Task<OnePieceApiResponse<DevilFruit>> GetDevilFruitByIdAsync(int id);
+  Task<DevilFruit> GetDevilFruitByIdAsync(int id);
 
-  [Get("/fruits/search")]
-  Task<OnePieceApiListResponse<DevilFruit>> SearchDevilFruitsAsync([Query] string name, [Query] int? page = null, [Query] int? limit = null);
+  [Get("/fruits/en/search")]
+  Task<List<DevilFruit>> SearchDevilFruitsAsync([Query] string? name = null, [Query] string? fruitType = null);
 }
