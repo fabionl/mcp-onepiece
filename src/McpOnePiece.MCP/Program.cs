@@ -3,6 +3,7 @@ using McpOnePiece.MCP.Endpoints.WeatherForecast;
 using McpOnePiece.MCP.Endpoints.OnePiece;
 using McpOnePiece.MCP.Services;
 using Refit;
+using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,9 +27,10 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+    app.MapScalarApiReference();  // default path: /scalar
 }
 
-app.UseHttpsRedirection();
+// app.UseHttpsRedirection();
 
 app.MapEndpoints();
 
