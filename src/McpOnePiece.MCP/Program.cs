@@ -34,6 +34,7 @@ if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
     app.MapScalarApiReference();  // default path: /scalar
+    app.UseDeveloperExceptionPage();
 }
 
 // app.UseHttpsRedirection();
