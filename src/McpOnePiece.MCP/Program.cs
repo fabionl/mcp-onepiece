@@ -1,6 +1,7 @@
 using McpOnePiece.MCP.Endpoints;
 using McpOnePiece.MCP.Endpoints.WeatherForecast;
 using McpOnePiece.MCP.Endpoints.OnePiece;
+using McpOnePiece.MCP.McpTools;
 using McpOnePiece.MCP.Services;
 using Refit;
 using Scalar.AspNetCore;
@@ -13,6 +14,11 @@ builder.Services
     .AddOpenApi()
     .AddSingleton<WeatherForecastHandler>()
     .AddScoped<OnePieceHandler>();
+
+builder.Services
+    .AddMcpServer()
+    .WithHttpTransport()
+    .WithTools<OnePieceTools>();
 
 // Configure One Piece API client
 builder.Services.AddRefitClient<IOnePieceApiClient>()
@@ -35,3 +41,5 @@ if (app.Environment.IsDevelopment())
 app.MapEndpoints();
 
 app.Run();
+
+
