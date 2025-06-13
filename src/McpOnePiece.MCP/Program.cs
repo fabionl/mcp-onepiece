@@ -1,5 +1,8 @@
 using McpOnePiece.MCP.Endpoints;
 using McpOnePiece.MCP.Endpoints.WeatherForecast;
+using McpOnePiece.MCP.Endpoints.OnePiece;
+using McpOnePiece.MCP.Services;
+using Refit;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,7 +10,15 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services
     .AddOpenApi()
-    .AddSingleton<WeatherForecastHandler>();
+    .AddSingleton<WeatherForecastHandler>()
+    .AddScoped<OnePieceHandler>();
+
+// Configure One Piece API client
+builder.Services.AddRefitClient<IOnePieceApiClient>()
+    .ConfigureHttpClient(c => c.BaseAddress = new Uri("https://api.api-onepiece.com/v2"));
+
+// Add One Piece service
+builder.Services.AddScoped<IOnePieceService, OnePieceService>();
 
 var app = builder.Build();
 

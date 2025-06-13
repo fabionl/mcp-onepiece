@@ -1,4 +1,5 @@
 using McpOnePiece.MCP.Endpoints.WeatherForecast;
+using McpOnePiece.MCP.Endpoints.OnePiece;
 
 namespace McpOnePiece.MCP.Endpoints;
 
@@ -6,8 +7,70 @@ public static class MapEndpointsExtensions
 {
     public static IEndpointRouteBuilder MapEndpoints(this IEndpointRouteBuilder builder)
     {
+        // Weather forecast endpoints (keeping for now)
         builder.MapGet("/weatherforecast", GetWeatherForecast)
             .WithName("GetWeatherForecast");
+
+        // One Piece API endpoints
+        var onePieceGroup = builder.MapGroup("/onepiece")
+            .WithTags("One Piece");
+
+        // Character endpoints
+        onePieceGroup.MapGet("/characters",
+            async (OnePieceHandler handler, int page = 1, int limit = 20) =>
+                await handler.GetCharacters(page, limit))
+            .WithName("GetCharacters")
+            .WithOpenApi();
+
+        onePieceGroup.MapGet("/characters/{id:int}",
+            async (OnePieceHandler handler, int id) =>
+                await handler.GetCharacterById(id))
+            .WithName("GetCharacterById")
+            .WithOpenApi();
+
+        onePieceGroup.MapGet("/characters/search",
+            async (OnePieceHandler handler, string name, int page = 1, int limit = 20) =>
+                await handler.SearchCharacters(name, page, limit))
+            .WithName("SearchCharacters")
+            .WithOpenApi();
+
+        // Crew endpoints
+        onePieceGroup.MapGet("/crews",
+            async (OnePieceHandler handler, int page = 1, int limit = 20) =>
+                await handler.GetCrews(page, limit))
+            .WithName("GetCrews")
+            .WithOpenApi();
+
+        onePieceGroup.MapGet("/crews/{id:int}",
+            async (OnePieceHandler handler, int id) =>
+                await handler.GetCrewById(id))
+            .WithName("GetCrewById")
+            .WithOpenApi();
+
+        onePieceGroup.MapGet("/crews/search",
+            async (OnePieceHandler handler, string name, int page = 1, int limit = 20) =>
+                await handler.SearchCrews(name, page, limit))
+            .WithName("SearchCrews")
+            .WithOpenApi();
+
+        // Devil Fruit endpoints
+        onePieceGroup.MapGet("/fruits",
+            async (OnePieceHandler handler, int page = 1, int limit = 20) =>
+                await handler.GetDevilFruits(page, limit))
+            .WithName("GetDevilFruits")
+            .WithOpenApi();
+
+        onePieceGroup.MapGet("/fruits/{id:int}",
+            async (OnePieceHandler handler, int id) =>
+                await handler.GetDevilFruitById(id))
+            .WithName("GetDevilFruitById")
+            .WithOpenApi();
+
+        onePieceGroup.MapGet("/fruits/search",
+            async (OnePieceHandler handler, string name, int page = 1, int limit = 20) =>
+                await handler.SearchDevilFruits(name, page, limit))
+            .WithName("SearchDevilFruits")
+            .WithOpenApi();
 
         return builder;
     }
@@ -19,5 +82,4 @@ public static class MapEndpointsExtensions
             .GetWeatherForecast()
             .ToArray();
     }
-
 }

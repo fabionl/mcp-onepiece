@@ -1,4 +1,62 @@
-@McpOnePiece_HostAddress = http://localhost:5100
+@McpOnePiece_HostAddress = http://localhost:5000
+
+# Weather Forecast (existing)
+GET {{McpOnePiece_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+# Get all characters (paginated)
+GET {{McpOnePiece_HostAddress}}/onepiece/characters?page=1&limit=10
+Accept: application/json
+
+###
+
+# Get character by ID
+GET {{McpOnePiece_HostAddress}}/onepiece/characters/1
+Accept: application/json
+
+###
+
+# Search characters by name
+GET {{McpOnePiece_HostAddress}}/onepiece/characters/search?name=luffy
+Accept: application/json
+
+###
+
+# Get all crews
+GET {{McpOnePiece_HostAddress}}/onepiece/crews?page=1&limit=10
+Accept: application/json
+
+###
+
+# Get crew by ID
+GET {{McpOnePiece_HostAddress}}/onepiece/crews/1
+Accept: application/json
+
+###
+
+# Search crews by name
+GET {{McpOnePiece_HostAddress}}/onepiece/crews/search?name=straw
+Accept: application/json
+
+###
+
+# Get all devil fruits
+GET {{McpOnePiece_HostAddress}}/onepiece/fruits?page=1&limit=10
+Accept: application/json
+
+###
+
+# Get devil fruit by ID
+GET {{McpOnePiece_HostAddress}}/onepiece/fruits/1
+Accept: application/json
+
+###
+
+# Search devil fruits by name
+GET {{McpOnePiece_HostAddress}}/onepiece/fruits/search?name=gomu
+Accept: application/jsonePiece_HostAddress = http://localhost:5100
 
 GET {{McpOnePiece_HostAddress}}/weatherforecast/
 Accept: application/json
